@@ -3,19 +3,27 @@
     "imagenes": [
         {
             "id": 1,
-            "ruta": "IMG/img1.jpeg"
+            "ruta": "IMG/img1.jpeg",
+            "nombre": "Maceta Escalera I",
+            "precio": "7000"
         },
         {
             "id": 2,
-            "ruta": "IMG/img2.jpeg"
+            "ruta": "IMG/img2.jpeg",
+            "nombre": "Maceta Escalera I",
+            "precio": "7000"
         },
         {
             "id": 3,
-            "ruta": "IMG/img3.jpeg"
+            "ruta": "IMG/img3.jpeg",
+            "nombre": "Maceta Escalera I",
+            "precio": "7000"
         },
         {
             "id": 4,
-            "ruta": "IMG/img4.jpeg"
+            "ruta": "IMG/img4.jpeg",
+            "nombre": "Maceta Escalera I",
+            "precio": "7000"
         }
     ]
 
