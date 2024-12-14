@@ -1,0 +1,22 @@
+
+{ 
+    "imagenes": [
+        {
+            "id": 1,
+            "ruta": "IMG/img1.jpeg"
+        },
+        {
+            "id": 2,
+            "ruta": "IMG/img2.jpeg"
+        },
+        {
+            "id": 3,
+            "ruta": "IMG/img3.jpeg"
+        },
+        {
+            "id": 4,
+            "ruta": "IMG/img4.jpeg"
+        }
+    ]
+
+}
