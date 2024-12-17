@@ -2,6 +2,14 @@
 
 const contenedor = document.getElementsByClassName("row");
 
+let carrito = [];
+
+if (JSON.parse(localStorage.getItem("carrito"))) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+} else {
+    carrito = [];
+}
+
 const arrayElementos = [
     {
         id: 1,
@@ -41,28 +49,10 @@ const arrayElementos = [
     },
 ];
 
-
-
 const contenedorCards = document.createElement("div");
 contenedorCards.setAttribute("id", "contenedorCards");
 contenedorCards.className = "col-sm-12 col-md-6 col-lg-4 estiloCards";
 
-
-
-/*const cards = [
-    {
-    imagen: "img1.jpeg",
-    titulo: "Card title 1",
-    precio: "2000",
-    cantidad: "1",
-},
-    {
-    imagen: "img2.jpeg",
-    titulo: "Card title 1",
-    precio: "2000",
-    cantidad: "1",
-},
-];*/
 
 fetch('JSON/imagenes.json')
 .then(response => response.json())
@@ -76,6 +66,14 @@ fetch('JSON/imagenes.json')
     });
 })
 .catch(error => console.log('Error al leer el archivo JSON:', error));
+
+function agregarCarrito(producto){
+    carrito.push(producto);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert(`Agregaste el producto ${producto.nombre} al carrito`);
+    console.log(carrito);
+   
+}
 
 function crearCard(producto){
     const cardElement = document.createElement("div");
@@ -97,10 +95,12 @@ function crearCard(producto){
     precio.className = "card-text";
     precio.textContent = `$${producto.precio}`;
 
-    const boton = document.createElement("a");
-    boton.href = "#";
-    boton.className = "btn btn-primary";
-    boton.textContent = "Ir a algún lado";
+    const botonAgregar = document.createElement("button");
+    //boton.href = "#";
+    botonAgregar.className = "btn btn-primary";
+    botonAgregar.textContent = "Agregar al carrito";
+    botonAgregar.addEventListener("click", () => agregarCarrito(producto));
+    
     
     const inputCantidad = document.createElement("input");
     inputCantidad.type = "number";
@@ -109,7 +109,7 @@ function crearCard(producto){
 
     cardBody.appendChild(titulo);
     cardBody.appendChild(precio);
-    cardBody.appendChild(boton);
+    cardBody.appendChild(botonAgregar);
     cardBody.appendChild(inputCantidad);
     cardElement.appendChild(imagen);
     cardElement.appendChild(cardBody);
@@ -165,11 +165,6 @@ fetch('JSON/imagenes.json')
 
 
 
-if (JSON.parse(localStorage.getItem("carrito"))) {
-    carrito = JSON.parse(localStorage.getItem("carrito"));
-} else {
-    carrito = [];
-}
 
 
 //const contenedorCards = document.getElementById('contenedorCards');
