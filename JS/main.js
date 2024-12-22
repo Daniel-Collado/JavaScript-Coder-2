@@ -1,6 +1,9 @@
 /*jshint esversion: 6 */
 
+
+
 const contenedor = document.getElementsByClassName("row");
+
 
 let carrito = [];
 
@@ -67,13 +70,41 @@ fetch('JSON/imagenes.json')
 })
 .catch(error => console.log('Error al leer el archivo JSON:', error));
 
+
+function actualizarNumeroCarrito(){
+    const numeroCarrito = document.getElementById('numeroCarrito');
+    let cantidadProductos = 0;
+    carrito.forEach(producto => {
+        cantidadProductos += producto.cantidad;
+    });
+    numeroCarrito.textContent = cantidadProductos;
+}
+
+
 function agregarCarrito(producto){
+    const inputCantidad = document.querySelector(`#inputCantidad${(producto.id)}`);
+    const cantidad = parseInt(inputCantidad.value);
+    
+    if(isNaN(cantidad) || cantidad <= 0){
+        swal.fire("Por favor, ingrese una cantidad válida");
+        return;
+    }
+    producto.cantidad = cantidad;
     carrito.push(producto);
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert(`Agregaste el producto ${producto.nombre} al carrito`);
+    actualizarNumeroCarrito();
+    Toastify({
+        text: `Agregaste el producto ${producto.nombre} al carrito`,
+        offset: {
+          x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+          y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+      }).showToast();
     console.log(carrito);
    
 }
+
+//localStorage.clear();
 
 function crearCard(producto){
     const cardElement = document.createElement("div");
@@ -95,22 +126,25 @@ function crearCard(producto){
     precio.className = "card-text";
     precio.textContent = `$${producto.precio}`;
 
+
+    const inputCantidad = document.createElement("input");
+    inputCantidad.type = "number";
+    inputCantidad.placeholder = "Cantidad";
+    inputCantidad.className = "form-control";
+    inputCantidad.id = `inputCantidad${(producto.id)}`;
+
+
     const botonAgregar = document.createElement("button");
     //boton.href = "#";
     botonAgregar.className = "btn btn-primary";
     botonAgregar.textContent = "Agregar al carrito";
     botonAgregar.addEventListener("click", () => agregarCarrito(producto));
     
-    
-    const inputCantidad = document.createElement("input");
-    inputCantidad.type = "number";
-    inputCantidad.placeholder = "cantidad";
-    inputCantidad.className = "form-control";
 
     cardBody.appendChild(titulo);
     cardBody.appendChild(precio);
-    cardBody.appendChild(botonAgregar);
     cardBody.appendChild(inputCantidad);
+    cardBody.appendChild(botonAgregar);
     cardElement.appendChild(imagen);
     cardElement.appendChild(cardBody);
     contenedorCards.appendChild(cardElement);
