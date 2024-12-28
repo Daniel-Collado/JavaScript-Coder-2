@@ -1,0 +1,13 @@
+{ 
+    "imagenesPosavasos": [
+        {
+            "id": 1,
+            "ruta": "../IMG/posavasos1.jpeg"
+        },
+        {
+            "id": 2,
+            "ruta": "../IMG/posavasos2.jpeg"
+        }
+    ]
+
+}

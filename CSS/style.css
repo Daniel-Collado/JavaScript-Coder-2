@@ -1,5 +1,19 @@
 .navbar{
-    background-color: #e3f2fd;
+    background-color: #d5e3b6;
+}
+
+main{
+    background-color: #fffff7;
+}
+
+.estilosCarrito{
+  display: flex;
+  align-self: flex-end;
+}
+
+.estilosMenu{
+  width: 100%;
+  display: flex;
 }
 
 card-img-top{
@@ -17,9 +31,16 @@ card-img-top{
     margin: 0;
 }
 
+.card{
+    background-color: #ffffff;
+}
+
 @media (min-width: 350px) and (max-width: 767px) {
-   
-    
+
+  main  {
+    font-size: 10px;
+  }
+ 
     .card {
         width: 18rem;
         padding: 20px;
@@ -28,7 +49,11 @@ card-img-top{
    
   }
   @media (min-width: 768px) and (max-width: 991px) {
-   
+
+    main {
+      font-size: 10px;
+    }
+
     .card {
       width: 25rem;
       padding: 25px;

@@ -1,0 +1,13 @@
+{ 
+    "imagenesBano": [
+        {
+            "id": 1,
+            "ruta": "../IMG/setbano1.jpeg"
+        },
+        {
+            "id": 2,
+            "ruta": "../IMG/setbano2.jpeg"
+        }
+    ]
+
+}

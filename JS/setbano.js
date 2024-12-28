@@ -2,7 +2,7 @@
 
 
 
-const contenedor = document.getElementsByClassName("row");
+const contenedorBano = document.getElementsByClassName("contenedorProductosBano");
 
 
 let carrito = [];
@@ -13,43 +13,26 @@ if (JSON.parse(localStorage.getItem("carrito"))) {
     carrito = [];
 }
 
-const arrayElementos = [
+const arrayElementosBano = [
     {
         id: 1,
-        imagen: "img1.jpeg",
-        nombre: "Maceta Escalera I",
-        precio: 7300,
+        imagen: "setbano1.jpeg",
+        nombre: "Set de baño I",
+        precio: 8300,
         cantidad: {
             placeholder:'Cantidad'
         }
     },
     {
         id:2,
-        imagen: "img2.jpeg",
-        nombre: "Maceta Escalera II",
-        precio: 7300,
+        imagen: "setbano2.jpeg",
+        nombre: "Set de baño II",
+        precio: 19000,
         cantidad: {
             placeholder:'Cantidad'
         }    
     },
-    {
-        id:3,
-        imagen: "img3.jpeg",
-        nombre: "Maceta Caldero",
-        precio: 8900,
-        cantidad: {
-            placeholder:'Cantidad'
-        } 
-    },
-    {
-        id:4,
-        imagen: "img4.jpeg",
-        nombre: "Maceta Penta",
-        precio: 8900,
-        cantidad: {
-            placeholder:'Cantidad'
-        }       
-    },
+    
 ];
 
 const contenedorCards = document.createElement("div");
@@ -57,11 +40,11 @@ contenedorCards.setAttribute("id", "contenedorCards");
 contenedorCards.className = "col-sm-12 col-md-6 col-lg-4 estiloCards";
 
 
-fetch('JSON/imagenes.json')
+fetch('../JSON/imagenesBano.json')
 .then(response => response.json())
 .then(data => {
-    const imagenes = data.imagenes;
-    arrayElementos.forEach((producto, indice) => {
+    const imagenes = data.imagenesBano;
+    arrayElementosBano.forEach((producto, indice) => {
     
     const imagen = imagenes[indice];
     producto.imagen = imagen.ruta;
@@ -152,7 +135,7 @@ function crearCard(producto){
     cardElement.appendChild(imagen);
     cardElement.appendChild(cardBody);
     contenedorCards.appendChild(cardElement);
-    contenedor[0].appendChild(contenedorCards);
+    contenedorBano[0].appendChild(contenedorCards);
 }
 
 

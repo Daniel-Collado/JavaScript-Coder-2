@@ -79,7 +79,7 @@ function actualizarNumeroCarrito(){
     let cantidadProductos = 0;
     carritoProductos.forEach(producto => {
         cantidadProductos += producto.cantidad;
-    })
+    });
     numeroCarrito.textContent = cantidadProductos;
 }
 
@@ -101,11 +101,11 @@ function eliminarProducto(indice) {
         cancelButtonColor: "#d33",
         confirmButtonText: "Sí, eliminar"
       }).then((result) => {
-        if (result.isConfirmed) {
+        if (result.isConfirmed) {     
           Swal.fire({
             title: "Producto eliminado",
             text: "El producto ha sido eliminado del carrito",
-            icon: "success"
+            icon: "success",
           });
           carritoProductos.splice(indice, 1);
     localStorage.setItem("carrito", JSON.stringify(carritoProductos));
