@@ -5,7 +5,7 @@ const carritoProductos = JSON.parse(localStorage.getItem("carrito")) || [];
 
 
 const contenedorCarrito = document.createElement("div");
-contenedorCarrito.className = "container";
+contenedorCarrito.className = "container contenedorCarrito";
 
 
 const tituloCarrito = document.createElement("h1");
@@ -63,6 +63,7 @@ carritoProductos.forEach((producto, indice) => {
 
     const tdEliminar = document.createElement("td");
     const botonEliminar = document.createElement("button");
+    botonEliminar.className = "btn btn-primary";
     botonEliminar.textContent = "Eliminar";
     botonEliminar.addEventListener("click", () => {
         eliminarProducto(indice);
@@ -84,6 +85,7 @@ function actualizarNumeroCarrito(){
 }
 
 const botonComprar = document.createElement("button");
+botonComprar.className = "btn btn-success botonComprar";
 botonComprar.innerText = "Comprar";
 botonComprar.addEventListener("click", () =>{
     swal.fire("Muchas gracias por su compra!");

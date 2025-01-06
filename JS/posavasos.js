@@ -35,9 +35,7 @@ const arrayElementosPosavasos = [
     
 ];
 
-const contenedorCards = document.createElement("div");
-contenedorCards.setAttribute("id", "contenedorCards");
-contenedorCards.className = "col-sm-12 col-md-6 col-lg-4 estiloCards";
+
 
 
 fetch('../JSON/imagenesPosavasos.json')
@@ -94,6 +92,11 @@ document.addEventListener("DOMContentLoaded", function()
 //localStorage.clear();
 
 function crearCard(producto){
+
+    const contenedorCards = document.createElement("div");
+    //contenedorCards.setAttribute("id", "contenedorCards");
+    contenedorCards.className = "col-sm-12 col-md-6 estiloCards";
+
     const cardElement = document.createElement("div");
     cardElement.className = "card";  
     
@@ -123,7 +126,7 @@ function crearCard(producto){
 
     const botonAgregar = document.createElement("button");
     //boton.href = "#";
-    botonAgregar.className = "btn btn-primary";
+    botonAgregar.className = "btn btn-color";
     botonAgregar.textContent = "Agregar al carrito";
     botonAgregar.addEventListener("click", () => agregarCarrito(producto));
     

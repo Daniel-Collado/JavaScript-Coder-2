@@ -1,15 +1,31 @@
 .navbar{
-    background-color: #d5e3b6;
+    background-color: #e7e4ff;
 }
 
 main{
-    background-color: #fffff7;
+    background-color: #fcfcff;
 }
 
 .estilosCarrito{
   display: flex;
   align-self: flex-end;
 }
+
+.contenedorCarrito{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+tbody, td, tfoot, th, thead, tr{
+  border-style: solid;
+  border-color: #e7e4ff;
+}
+
+.botonComprar{
+  width: 6rem;
+}
+
 
 .estilosMenu{
   width: 100%;
@@ -24,7 +40,6 @@ card-img-top{
 
 
 .estiloCards{
-    width: 100%;
     display: flex;
     justify-content: center;
     padding: 25px;
@@ -32,7 +47,20 @@ card-img-top{
 }
 
 .card{
-    background-color: #ffffff;
+  background-color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+transform: scale(1.06);
+}
+
+.form-control{
+  margin-bottom: 10px;
+}
+
+.btn-color{
+  background-color: #f0cdd1;
 }
 
 @media (min-width: 350px) and (max-width: 767px) {
@@ -41,13 +69,13 @@ card-img-top{
     font-size: 10px;
   }
  
-    .card {
-        width: 18rem;
-        padding: 20px;
-        margin: 10px;
-        }
-   
+  .card {
+      width: 18rem;
+      padding: 20px;
+      margin: 10px;
+      }
   }
+  
   @media (min-width: 768px) and (max-width: 991px) {
 
     main {
