@@ -15,7 +15,7 @@ if (JSON.parse(localStorage.getItem("carrito"))) {
 
 const arrayElementosPosavasos = [
     {
-        id: 1,
+        id: "posavasos-1",
         imagen: "posavasos1.jpeg",
         nombre: "Set de posavasos",
         precio: 9300,
@@ -24,7 +24,7 @@ const arrayElementosPosavasos = [
         }
     },
     {
-        id:2,
+        id:"posavasos-2",
         imagen: "posavasos2.jpeg",
         nombre: "Set de posavasos",
         precio: 9300,
@@ -70,8 +70,16 @@ function agregarCarrito(producto){
         swal.fire("Por favor, ingrese una cantidad válida");
         return;
     }
+
+    const productoExistente = carrito.find((p) => (producto.id) == (p.id));
+    if(productoExistente){
+        productoExistente.cantidad += cantidad;
+    } 
+    else{
     producto.cantidad = cantidad;
     carrito.push(producto);
+    }
+
     localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarNumeroCarrito();
     Toastify({

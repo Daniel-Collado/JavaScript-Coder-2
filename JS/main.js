@@ -16,7 +16,7 @@ if (JSON.parse(localStorage.getItem("carrito"))) {
 
 const arrayElementos = [
     {
-        id: 1,
+        id: "macetas-1",
         imagen: "img1.jpeg",
         nombre: "Maceta Escalera I",
         precio: 7300,
@@ -25,7 +25,7 @@ const arrayElementos = [
         }
     },
     {
-        id:2,
+        id: "macetas-2",
         imagen: "img2.jpeg",
         nombre: "Maceta Escalera II",
         precio: 7300,
@@ -34,7 +34,7 @@ const arrayElementos = [
         }    
     },
     {
-        id:3,
+        id: "macetas-3",
         imagen: "img3.jpeg",
         nombre: "Maceta Caldero",
         precio: 8900,
@@ -43,7 +43,7 @@ const arrayElementos = [
         } 
     },
     {
-        id:4,
+        id: "macetas-4",
         imagen: "img4.jpeg",
         nombre: "Maceta Penta",
         precio: 8900,
@@ -89,8 +89,16 @@ function agregarCarrito(producto){
         swal.fire("Por favor, ingrese una cantidad válida");
         return;
     }
+
+    const productoExistente = carrito.find((p) => (producto.id) == (p.id));
+    if(productoExistente){
+        productoExistente.cantidad += cantidad;
+    } 
+    else{
     producto.cantidad = cantidad;
     carrito.push(producto);
+    }
+
     localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarNumeroCarrito();
     Toastify({

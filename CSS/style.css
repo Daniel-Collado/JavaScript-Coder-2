@@ -17,6 +17,11 @@ main{
   flex-direction: column;
 }
 
+.compraTotal{
+  display: flex;
+  font-weight: bold;
+}
+
 tbody, td, tfoot, th, thead, tr{
   border-style: solid;
   border-color: #e7e4ff;

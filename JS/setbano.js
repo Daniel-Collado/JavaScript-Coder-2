@@ -15,7 +15,7 @@ if (JSON.parse(localStorage.getItem("carrito"))) {
 
 const arrayElementosBano = [
     {
-        id: 1,
+        id: "setBano-1",
         imagen: "setbano1.jpeg",
         nombre: "Set de baño I",
         precio: 8300,
@@ -24,7 +24,7 @@ const arrayElementosBano = [
         }
     },
     {
-        id:2,
+        id:"setBano-2",
         imagen: "setbano2.jpeg",
         nombre: "Set de baño II",
         precio: 19000,
@@ -68,8 +68,16 @@ function agregarCarrito(producto){
         swal.fire("Por favor, ingrese una cantidad válida");
         return;
     }
+
+    const productoExistente = carrito.find((p) => (producto.id) == (p.id));
+    if(productoExistente){
+        productoExistente.cantidad += cantidad;
+    } 
+    else{
     producto.cantidad = cantidad;
     carrito.push(producto);
+    }
+
     localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarNumeroCarrito();
     Toastify({

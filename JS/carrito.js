@@ -40,6 +40,7 @@ thTotal.textContent = "Total";
 
 const tbodyCarrito = document.createElement("tbody");
 
+let totalCompra = 0;
 
 carritoProductos.forEach((producto, indice) => {
     const trTbodyCarrito = document.createElement("tr");
@@ -61,6 +62,8 @@ carritoProductos.forEach((producto, indice) => {
     tdTotal.textContent = `$${producto.precio * producto.cantidad}`;
     trTbodyCarrito.appendChild(tdTotal);
 
+    totalCompra += producto.precio * producto.cantidad;
+
     const tdEliminar = document.createElement("td");
     const botonEliminar = document.createElement("button");
     botonEliminar.className = "btn btn-primary";
@@ -70,9 +73,36 @@ carritoProductos.forEach((producto, indice) => {
     });
     tdEliminar.appendChild(botonEliminar);
     trTbodyCarrito.appendChild(tdEliminar);
-
-
 });
+
+const totalElement = document.createElement("p");
+totalElement.className = "compraTotal";
+totalElement.textContent = `Total de la Compra: $${totalCompra}`;
+
+const botonComprar = document.createElement("button");
+botonComprar.className = "btn btn-success botonComprar";
+botonComprar.innerText = "Comprar";
+botonComprar.addEventListener("click", () =>{
+    swal.fire("Muchas gracias por su compra!");
+    carritoProductos.splice(0, carritoProductos.length);
+    localStorage.removeItem("carrito");
+    setTimeout(() => {
+    location.reload();
+    }, 2000);
+});
+contenedorCarrito.appendChild(botonComprar);
+document.body.appendChild(contenedorCarrito);
+
+contenedorCarrito.appendChild(tituloCarrito);
+contenedorCarrito.appendChild(tablaCarrito);
+tablaCarrito.appendChild(theadCarrito);
+theadCarrito.appendChild(trTheadCarrito);
+trTheadCarrito.appendChild(thProducto);
+trTheadCarrito.appendChild(thCantidad);
+trTheadCarrito.appendChild(thPrecio);
+trTheadCarrito.appendChild(thTotal);
+tablaCarrito.appendChild(tbodyCarrito);
+contenedorCarrito.appendChild(totalElement);
 
 
 function actualizarNumeroCarrito(){
@@ -83,15 +113,6 @@ function actualizarNumeroCarrito(){
     });
     numeroCarrito.textContent = cantidadProductos;
 }
-
-const botonComprar = document.createElement("button");
-botonComprar.className = "btn btn-success botonComprar";
-botonComprar.innerText = "Comprar";
-botonComprar.addEventListener("click", () =>{
-    swal.fire("Muchas gracias por su compra!");
-});
-contenedorCarrito.appendChild(botonComprar);
-document.body.appendChild(contenedorCarrito);
 
 function eliminarProducto(indice) {
     Swal.fire({
@@ -128,12 +149,3 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-contenedorCarrito.appendChild(tituloCarrito);
-contenedorCarrito.appendChild(tablaCarrito);
-tablaCarrito.appendChild(theadCarrito);
-theadCarrito.appendChild(trTheadCarrito);
-trTheadCarrito.appendChild(thProducto);
-trTheadCarrito.appendChild(thCantidad);
-trTheadCarrito.appendChild(thPrecio);
-trTheadCarrito.appendChild(thTotal);
-tablaCarrito.appendChild(tbodyCarrito);
